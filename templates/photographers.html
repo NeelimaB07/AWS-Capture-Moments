@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Photographers | Capture Perfect Moments</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff4d4d;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --gray: #95a5a6;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --radius: 16px;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 0 auto 30px;
+            border-radius: 2px;
+        }
+
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--dark);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 25px;
+            position: relative;
+        }
+
+        .photographer-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .photographer-location {
+            display: flex;
+            align-items: center;
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .photographer-location i {
+            margin-right: 5px;
+            color: var(--primary);
+        }
+
+        .photographer-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .skill-tag {
+            background: rgba(106, 17, 203, 0.1);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .photographer-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .info-item {
+            text-align: center;
+        }
+
+        .info-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .stars {
+            color: #FFD700;
+            margin-right: 8px;
+        }
+
+        .rating-value {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .availability {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .availability-tag {
+            background: rgba(37, 117, 252, 0.1);
+            color: var(--secondary);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            text-align: center;
+            background: var(--gradient);
+            color: white;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(106, 17, 203, 0.2);
+        }
+
+        .btn-outline {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 50px;
+            padding: 12px 25px;
+            background: white;
+            color: var(--primary);
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .back-btn i {
+            margin-right: 8px;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+            background: var(--primary);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Our Elite Photographers</h1>
+            <p>Meet our award-winning team of professional photographers, each with unique expertise to capture your perfect moments</p>
+            <div class="divider"></div>
+            
+            <div class="filter-bar">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">Wedding</button>
+                <button class="filter-btn">Portrait</button>
+             
+                <button class="filter-btn">Fashion</button>
+                <button class="filter-btn">Event</button>
+            </div>
+        </header>
+
+        <div class="grid">
+            {% for p in photographers %}
+            <div class="card" data-skills="{{ p.skills | join(' ') }}">
+                {% if p.featured %}
+                <div class="card-badge">Featured</div>
+                {% endif %}
+                
+                <img src="{{ url_for('static', filename='images/' + p.image) }}" alt="{{ p.name }}" class="card-img">
+                
+                <div class="card-content">
+                    <h3 class="photographer-name">{{ p.name }}</h3>
+                    
+                    <div class="photographer-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        {{ p.location }}
+                    </div>
+                    
+                    <div class="photographer-skills">
+                        {% for skill in p.skills %}
+                        <span class="skill-tag">{{ skill }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="photographer-info">
+                        <div class="info-item">
+                            <div class="info-label">Experience</div>
+                            <div class="info-value">{{ p.experience }} years</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Price</div>
+                            <div class="info-value">{{ p.price }}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Shoots</div>
+                            <div class="info-value">250+</div>
+                        </div>
+                    </div>
+                    
+                    <div class="rating">
+                        <div class="stars">
+                            {% for i in range(p.rating|int) %}
+                            <i class="fas fa-star"></i>
+                            {% endfor %}
+                            {% if p.rating - p.rating|int > 0 %}
+                            <i class="fas fa-star-half-alt"></i>
+                            {% endif %}
+                        </div>
+                        <div class="rating-value">{{ p.rating }}/5</div>
+                    </div>
+                    
+                    <div class="availability">
+                        {% for day in availability_data[p.id] %}
+                        <span class="availability-tag">{{ day }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <a href="{{ url_for('book', photographer_id=p.id) }}" class="btn">Book Now</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <a href="/" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Back to Home
+        </a>
+    </div>
+
+    <script>
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.card');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filterValue = btn.textContent.toLowerCase();
+                
+                // Filter cards
+                cards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        const skills = card.dataset.skills.toLowerCase();
+                        if (skills.includes(filterValue)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+        
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const cards = document.querySelectorAll('.card');
+            
+            cards.forEach((card, index) => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (cardPosition < screenPosition) {
+                    card.style.transitionDelay = `${index * 0.1}s`;
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animation
+        window.addEventListener('load', () => {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.5s ease';
+            });
+            
+            animateOnScroll();
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>

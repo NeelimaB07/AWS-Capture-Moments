@@ -1,0 +1,510 @@
+<!-- Full working HTML file with fixed navbar and all sections -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Professional fashion photography services for models, brands, and influencers. Book our creative team for stunning editorial, commercial, and portfolio shoots.">
+  <title>Fashion Photography | Capture Moments</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #a64ac9;
+      --primary-light: #d66ba0;
+      --primary-dark: #7d3c98;
+      --secondary: #fbc2eb;
+      --accent: #ff6b6b;
+      --dark: #222;
+      --light: #f8f6ff;
+      --gray: #666;
+      --transition: all 0.3s ease;
+      --shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      --shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --radius: 12px;
+      --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #fbeee0, var(--light));
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(34, 34, 34, 0.95);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
+    }
+
+    nav.scrolled {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      padding: 10px 30px;
+    }
+
+    nav h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      padding: 8px 0;
+      position: relative;
+    }
+
+    .nav-links li a:hover {
+      color: var(--secondary);
+    }
+
+    .nav-links li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient);
+      transition: var(--transition);
+    }
+
+    .nav-links li a:hover::after {
+      width: 100%;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .nav-links.show {
+      display: flex !important;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 30px;
+      background: rgba(34, 34, 34, 0.95);
+      padding: 15px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    @media (max-width: 992px) {
+      .nav-links {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1483181957632-8bda974cbc91?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+      margin-top: 70px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      font-size: 1.3rem;
+      font-style: italic;
+    }
+
+    /* Sections */
+    .section {
+      padding: 80px 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    .section-title p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--gray);
+    }
+
+    .divider {
+      width: 80px;
+      height: 3px;
+      background: var(--gradient);
+      margin: 15px auto;
+      border-radius: 3px;
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow);
+    }
+
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h3 {
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+
+    .card-content p {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    /* Stats */
+    .stats {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      background: rgba(214, 107, 160, 0.1);
+      padding: 60px 20px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .stat-label {
+      font-weight: 500;
+    }
+
+    /* Testimonials */
+    .testimonials-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .testimonial {
+      background: white;
+      padding: 25px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+
+    .testimonial::before {
+      content: '"';
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      font-size: 4rem;
+      color: rgba(166, 74, 201, 0.1);
+      font-family: serif;
+    }
+
+    .testimonial p {
+      font-style: italic;
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .testimonial strong {
+      color: var(--primary);
+    }
+
+    /* CTA */
+    .cta {
+      background: var(--gradient);
+      padding: 80px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      font-size: 1.1rem;
+    }
+
+    .cta-btn {
+      padding: 15px 30px;
+      background: white;
+      color: var(--primary);
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 15px;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.3rem;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      color: var(--secondary);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav id="navbar">
+    <h1>Capture Moments</h1>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#stats">Stats</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#book">Book</a></li>
+    </ul>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h1>Fashion Photography</h1>
+      <p>Strike a pose. Define your style.</p>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section" id="gallery">
+    <div class="section-title">
+      <h2>Glamour Meets Lens</h2>
+      <p>Explore stunning fashion portfolios captured by our creative professionals.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="gallery">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1470&q=80" alt="">
+        <div class="card-content">
+          <h3>Ramp Ready</h3>
+          <p>Captured live during fashion week — a blend of elegance and edge.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?auto=format&fit=crop&w=1374&q=80" alt="">
+        <div class="card-content">
+          <h3>Editorial Flair</h3>
+          <p>Dramatic lighting, high-fashion poses, and pure attitude.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1470&q=80" alt="">
+        <div class="card-content">
+          <h3>Street Style</h3>
+          <p>Urban fashion captured in natural light — trendy, raw, and real.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats" id="stats">
+    <div class="stat-item"><div class="stat-number">150+</div><div class="stat-label">Fashion Shoots</div></div>
+    <div class="stat-item"><div class="stat-number">3000+</div><div class="stat-label">Outfits Styled</div></div>
+    <div class="stat-item"><div class="stat-number">50+</div><div class="stat-label">Brands Featured</div></div>
+    <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Style Satisfaction</div></div>
+  </section>
+
+  <!-- Quote -->
+  <section class="section" style="background: rgba(251, 190, 224, 0.2);">
+    <blockquote style="font-style: italic; text-align: center; font-size: 1.5rem; max-width: 800px; margin: 0 auto;">
+      "Style is a way to say who you are without having to speak."
+      <footer style="margin-top: 15px; font-size: 1rem; color: var(--primary);">— Rachel Zoe</footer>
+    </blockquote>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section" id="testimonials">
+    <div class="section-title">
+      <h2>What Our Clients Say</h2>
+      <p>Hear from models, brands, and agencies we've worked with</p>
+      <div class="divider"></div>
+    </div>
+    <div class="testimonials-container">
+      <div class="testimonial">
+        <p>Absolutely stunning photos. I felt like a magazine model! The team made me so comfortable and brought out my best angles.</p>
+        <strong>— Sneha R., Model</strong>
+      </div>
+      <div class="testimonial">
+        <p>Their creativity and attention to detail are unmatched. We've used them for three campaigns now and the results are always phenomenal.</p>
+        <strong>— Aarav M., Brand Manager</strong>
+      </div>
+      <div class="testimonial">
+        <p>As an influencer, my photos are my business. Capture Moments consistently delivers images that grow my audience and attract sponsors.</p>
+        <strong>— Priya K., Fashion Influencer</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="book">
+    <h2>Ready to elevate your fashion portfolio?</h2>
+    <p>Book a professional shoot with our team and shine with confidence.</p>
+    <a href="#" class="cta-btn">Book Now</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+    </div>
+    <p>&copy; 2025 Capture Moments. All rights reserved.</p>
+    <p style="margin-top: 10px; font-style: italic;">Fashion fades, photos last forever.</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+      mobileMenuBtn.setAttribute('aria-expanded', navLinks.classList.contains('show'));
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 992) {
+          navLinks.classList.remove('show');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

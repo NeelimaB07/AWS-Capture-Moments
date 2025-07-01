@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Photographer | Capture Moments</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --primary-dark: #3a0ca3;
+            --secondary: #4cc9f0;
+            --accent: #f72585;
+            --dark: #0a1128;
+            --light: #f8f9fa;
+            --gray: #adb5bd;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            --shadow-sm: 0 10px 20px rgba(0, 0, 0, 0.15);
+            --radius: 12px;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-color: var(--dark);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: 
+                        url('https://mrwallpaper.com/images/hd/unique-pacman-laptop-background-4r29472kx0jtdlqy.jpg') no-repeat center center/cover;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 40px;
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .booking-form-container {
+            flex: 1;
+            min-width: 350px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transform: perspective(1000px) rotateY(0deg);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInRight 1s ease-out 0.3s both;
+        }
+
+        .booking-form-container:hover {
+            transform: perspective(1000px) rotateY(5deg) translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 500px;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .features-list li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 35px;
+            font-size: 1.05rem;
+        }
+
+        .features-list li i {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--dark);
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 3px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: var(--radius);
+            font-size: 15px;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.8);
+            font-family: 'Inter', sans-serif;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: var(--radius);
+            background: var(--gradient);
+            color: white;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+            opacity: 0;
+            z-index: -1;
+            transition: var(--transition);
+        }
+
+        button:hover::before {
+            opacity: 1;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .message {
+            background-color: rgba(212, 237, 218, 0.9);
+            color: #155724;
+            padding: 15px;
+            border-radius: var(--radius);
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 500;
+            animation: fadeIn 0.6s ease-out;
+            border-left: 4px solid #28a745;
+        }
+
+        .form-icon {
+            position: absolute;
+            right: 15px;
+            top: 38px;
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        input:focus + .form-icon {
+            color: var(--primary);
+        }
+
+        /* Floating lens effect */
+        .floating-lens {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(67, 97, 238, 0.15) 0%, transparent 70%);
+            animation: float 15s infinite ease-in-out;
+            z-index: 1;
+        }
+
+        .lens-1 {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .lens-2 {
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(20px, 20px);
+            }
+            50% {
+                transform: translate(0, 40px);
+            }
+            75% {
+                transform: translate(-20px, 20px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                padding-top: 100px;
+                padding-bottom: 100px;
+            }
+
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 50px;
+                text-align: center;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .features-list {
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .booking-form-container {
+                width: 100%;
+                max-width: 600px;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .hero-content {
+                padding: 80px 20px;
+            }
+
+            h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero-description {
+                font-size: 1.1rem;
+            }
+
+            .booking-form-container {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.7rem;
+            }
+
+            .booking-form-container {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero-section">
+        <!-- Floating lens effects -->
+        <div class="floating-lens lens-1"></div>
+        <div class="floating-lens lens-2"></div>
+
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Book Your Perfect Photographer</h1>
+                <p class="hero-description">
+                    Capture your special moments with our professional photographers. 
+                    Book in just a few clicks and create memories that last forever.
+                </p>
+                
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> 100+ Professional Photographers</li>
+                    <li><i class="fas fa-check-circle"></i> Flexible Booking Options</li>
+                    <li><i class="fas fa-check-circle"></i> Premium Quality Guaranteed</li>
+                    <li><i class="fas fa-check-circle"></i> 24/7 Customer Support</li>
+                </ul>
+            </div>
+
+            <div class="booking-form-container">
+                {% with messages = get_flashed_messages(with_categories=true) %} 
+                    {% if messages %} 
+                        {% for category, message in messages %}
+                            <div class="message">{{ message }}</div>
+                        {% endfor %} 
+                    {% endif %} 
+                {% endwith %}
+
+                <h2>Booking Details</h2>
+
+                <form method="POST" action="/book">
+                    <div class="form-group">
+                        <label for="photographer_id">Photographer ID</label>
+                        <input type="text" id="photographer_id" name="photographer_id" placeholder="e.g., p1" required>
+                        <i class="fas fa-camera form-icon"></i>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="user_id">Your User ID</label>
+                        <input type="text" id="user_id" name="user_id" placeholder="Enter your ID" required>
+                        <i class="fas fa-user form-icon"></i>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Booking Date</label>
+                        <input type="date" id="date" name="date" required>
+                        <i class="fas fa-calendar-alt form-icon"></i>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Booking Price (₹)</label>
+                        <input type="number" id="price" name="price" placeholder="e.g., 3000" required>
+                        <i class="fas fa-rupee-sign form-icon"></i>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Location Details</label>
+                        <textarea id="address" name="address" rows="3" placeholder="Enter your full address" required></textarea>
+                        <i class="fas fa-map-marker-alt form-icon" style="top: 50px;"></i>
+                    </div>
+
+                    <button type="submit">
+                        <i class="fas fa-check-circle"></i> Confirm Booking
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('date').min = today;
+            
+            // Add floating animation to form container on hover
+            const formContainer = document.querySelector('.booking-form-container');
+            
+            formContainer.addEventListener('mouseenter', function() {
+                this.style.transform = 'perspective(1000px) rotateY(5deg) translateY(-10px)';
+            });
+            
+            formContainer.addEventListener('mouseleave', function() {
+                this.style.transform = 'perspective(1000px) rotateY(0deg) translateY(0)';
+            });
+            
+            // Add focus effects to form elements
+            const inputs = document.querySelectorAll('input, textarea');
+            
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.querySelector('label').style.color = '#4361ee';
+                    this.parentElement.querySelector('.form-icon').style.transform = 'scale(1.2)';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.querySelector('label').style.color = '';
+                    this.parentElement.querySelector('.form-icon').style.transform = '';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Travel & Destination Shoots | Capture Moments</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ff7e5f;
+      --accent: #ff9472;
+      --background: #0e0e0e;
+      --text: #ffffff;
+      --muted: #cccccc;
+      --card-bg: #1e1e1e;
+      --shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      --radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--card-bg);
+      color: white;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: var(--accent);
+    }
+
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    main {
+      padding: 60px 20px;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    p.description {
+      max-width: 800px;
+      margin: 20px auto;
+      font-size: 1.2rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin: 50px auto;
+      max-width: 1200px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h3 {
+      color: var(--accent);
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .card-content p {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .why-section {
+      margin-top: 80px;
+      text-align: center;
+    }
+
+    .why-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .why-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .why-item {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      width: 240px;
+    }
+
+    .why-item h4 {
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .why-item p {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      header h1 {
+        margin-bottom: 10px;
+      }
+      nav a {
+        display: inline-block;
+        margin: 10px 10px 0;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Capture Moments</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/book">Book Now</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Travel & Destination Shoots</h2>
+    <p class="description">
+      Travel and destination photography that captures the spirit, beauty, and story of exotic locations. Whether it's for weddings, personal memories, or social media, our photographers frame every moment perfectly.
+    </p>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://images.stockcake.com/public/8/9/9/899b2b90-c402-4147-b3d7-89fd1af97b9f_large/sunset-beach-wedding-stockcake.jpg" alt="Beach Wedding">
+        <div class="card-content">
+          <h3>Beach Weddings</h3>
+          <p>Capture magical moments on golden shores with stunning sunsets.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://plus.unsplash.com/premium_photo-1664908364593-729f67b1a0e4?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dHJhdmVsJTIwbW91bnRhaW58ZW58MHx8MHx8fDA%3D" alt="Mountain Elopement">
+        <div class="card-content">
+          <h3>Mountain Elopements</h3>
+          <p>Adventurous souls find their moments in misty peaks and trails.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://img.delicious.com.au/DGZCHR1s/del/2018/12/paris-france-97370-2.jpg" alt="City Romance">
+        <div class="card-content">
+          <h3>City Romance</h3>
+          <p>Urban love stories told against iconic skylines and neon nights.</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="why-section">
+      <h2>Why Choose Us?</h2>
+      <div class="why-grid">
+        <div class="why-item">
+          <h4>✈️ Destination Experts</h4>
+          <p>We’ve shot in 20+ countries — we know the perfect spots.</p>
+        </div>
+        <div class="why-item">
+          <h4>🎒 Travel-Ready Team</h4>
+          <p>Always packed and prepped for capturing moments anywhere.</p>
+        </div>
+        <div class="why-item">
+          <h4>📸 Custom Edits</h4>
+          <p>Post-processed to enhance colors, moods, and clarity.</p>
+        </div>
+        <div class="why-item">
+          <h4>🕒 Fast Turnaround</h4>
+          <p>Receive your professional gallery within days, not weeks.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

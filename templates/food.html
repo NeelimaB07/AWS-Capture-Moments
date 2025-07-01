@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Food Photography | Capture Moments</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ff6f61;
+      --accent: #ffcdb2;
+      --background: #0e0e0e;
+      --text: #ffffff;
+      --muted: #cccccc;
+      --card-bg: #1e1e1e;
+      --shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      --radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--card-bg);
+      color: white;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    main {
+      padding: 60px 20px;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    p.description {
+      max-width: 800px;
+      margin: 20px auto;
+      font-size: 1.2rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin: 50px auto;
+      max-width: 1200px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h3 {
+      color: var(--accent);
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .card-content p {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .why-section {
+      margin-top: 80px;
+      text-align: center;
+    }
+
+    .why-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .why-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .why-item {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      width: 240px;
+    }
+
+    .why-item h4 {
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .why-item p {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      header h1 {
+        margin-bottom: 10px;
+      }
+      nav a {
+        display: inline-block;
+        margin: 10px 10px 0;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Capture Moments</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/book">Book Now</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Food Photography</h2>
+    <p class="description">
+      Make your food irresistible with mouthwatering imagery. Perfect for restaurants, delivery platforms, or social media campaigns — our team makes your dishes the stars of the frame.
+    </p>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="https://www.sheknows.com/wp-content/uploads/2018/08/grilled-salmon-gourmet-dinner-horiz_uyauuc.jpeg" alt="Gourmet Dish">
+        <div class="card-content">
+          <h3>Gourmet Dishes</h3>
+          <p>Perfect plating and rich textures captured professionally.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://www.lakdi.com/cdn/shop/articles/trendy-cafe-furniture-1.jpg?v=1697097734" alt="Cafe Food Styling">
+        <div class="card-content">
+          <h3>Cafe Styling</h3>
+          <p>Showcase your menu with trendy, vibrant visuals.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://belleofthekitchen.com/wp-content/uploads/2024/06/no-bake-oreo-dessert-1-2.jpg" alt="Desserts">
+        <div class="card-content">
+          <h3>Desserts & Bakes</h3>
+          <p>Delicious frames of cakes, cupcakes, and sweet treats.</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="why-section">
+      <h2>Why Choose Us?</h2>
+      <div class="why-grid">
+        <div class="why-item">
+          <h4>📸 Professional Angles</h4>
+          <p>Every dish shot from its best angle to highlight appeal.</p>
+        </div>
+        <div class="why-item">
+          <h4>💡 Studio Lighting</h4>
+          <p>Controlled lighting setup to bring out natural colors.</p>
+        </div>
+        <div class="why-item">
+          <h4>🎯 Social Media Ready</h4>
+          <p>Optimized formats for Instagram, Zomato, and more.</p>
+        </div>
+        <div class="why-item">
+          <h4>🧑‍🍳 Collaboration</h4>
+          <p>We work with your chefs to capture the essence of your brand.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
